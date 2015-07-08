@@ -108,4 +108,4 @@ EOF
 /usr/bin/puppet resource service puppet ensure=running enable=true
 
 /usr/bin/puppet agent --enable
-/usr/bin/puppet agent --test
+/usr/bin/puppet agent --test --waitforcert 10
