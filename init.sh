@@ -104,7 +104,7 @@ EOF
 
 /usr/bin/puppet resource service puppet ensure=stopped enable=true
 
-rm -rf /etc/puppetlabs/puppet/ssl
+rm -rf /var/lib/puppet/ssl/certs/
 
 /usr/bin/puppet resource service puppet ensure=running enable=true
 
