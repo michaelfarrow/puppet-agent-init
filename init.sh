@@ -102,8 +102,9 @@ server          = $server
 
 EOF
 
-/usr/bin/service puppet stop
-/usr/bin/service puppet start
+/usr/bin/puppet resource service puppet ensure=stopped enable=true
+
+rm -rf /etc/puppetlabs/puppet/ssl
 
 /usr/bin/puppet resource service puppet ensure=running enable=true
 
