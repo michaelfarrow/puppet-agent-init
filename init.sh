@@ -108,4 +108,6 @@ EOF
 /usr/bin/puppet resource service puppet ensure=running enable=true
 
 /usr/bin/puppet agent --enable
+
+echo "Waiting for certificate to be signed..."
 /usr/bin/puppet agent --test --waitforcert 10
