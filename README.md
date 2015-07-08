@@ -1,0 +1,1 @@
+curl https://raw.githubusercontent.com/weyforth/puppet-agent-init/master/init.sh -o init.sh && chmod +x init.sh && ./init.sh yourdomain.com

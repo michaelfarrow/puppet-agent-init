@@ -105,7 +105,7 @@ EOF
 /usr/bin/service puppet stop
 /usr/bin/service puppet start
 
-/usr/bin/puppet puppet resource service puppet ensure=running enable=true
+/usr/bin/puppet resource service puppet ensure=running enable=true
 
 /usr/bin/puppet agent --enable
 /usr/bin/puppet agent --test
