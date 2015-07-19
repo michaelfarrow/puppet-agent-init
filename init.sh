@@ -72,8 +72,20 @@ while [[ "$ca_server" == "" ]]
 done
 
 echo "$hostname" > /etc/hostname
+
 hostname $hostname
-cat > /etc/hosts << EOF
+
+if [[ "$(uname)" == "Darwin" ]]; then
+
+	cat > /etc/hosts << EOF
+127.0.0.1 $hostname.$domain $hostname localhost
+255.255.255.255	broadcasthost
+::1	localhost
+EOF
+
+else
+
+	cat > /etc/hosts << EOF
 127.0.0.1   $hostname.$domain $hostname localhost localhost.localdomain
 ::1     ip6-localhost ip6-loopback
 fe00::0 ip6-localnet
@@ -82,8 +94,12 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 EOF
 
-apt-get update
-apt-get install -y puppet
+fi
+
+if [ "$(uname)" != "Darwin" ]; then
+	apt-get update
+	apt-get install -y puppet
+fi
 
 cat > /etc/puppet/puppet.conf << EOF
 
